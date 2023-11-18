@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
+import { Spin } from 'antd';
+
 
 function Cabinet() {
     const [data, setData] = useState();
@@ -50,7 +52,7 @@ function Cabinet() {
                 <h1>{data.user['username']}</h1>
                 <h1>{data.user['email']}</h1>
             </> :
-                <h1>Loading...</h1>
+                <Spin/>
             }
 
         </>
