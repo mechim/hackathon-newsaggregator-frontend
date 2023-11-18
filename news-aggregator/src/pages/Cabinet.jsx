@@ -5,6 +5,7 @@ import axios from 'axios';
 function Cabinet() {
     const [data, setData] = useState();
     const [loading, setLoading] = useState(true);
+    const [topics, setTopics] = useState([]);
     useEffect(() => {
         fetchData();
     }, [])
@@ -19,11 +20,21 @@ function Cabinet() {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json', // Adjust content type as needed
                 'Authorization': 'Bearer ' + token
-                // Add other headers if required
             };
             setLoading(true);
             await axios.get('http://127.0.0.1:8000/users/profile', { headers }).then((res) => {
                 setData(res.data);
+                setLoading(false);
+            })
+        } catch (error) {
+            setLoading(false);
+            console.error('Error fetching data', error);
+        }
+
+        try {
+            setLoading(true);
+            await axios.get('http://127.0.0.1:8000/tags/get').then((res) => {
+                console.log(res.data);
                 setLoading(false);
             })
         } catch (error) {

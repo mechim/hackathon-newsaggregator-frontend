@@ -24,10 +24,10 @@ function Navbar() {
     };
     
     return (
-        <nav>
+        <nav style={{display: "flex", flexDirection: "row", gap:"12px"}}>
             <Row>
                 <Col></Col>
-                <Col>
+                <Col style={{display: "flex", flexDirection: "row", gap:"12px", alignItems:"center"}}>
                     <Link to="/news">Acasa</Link>
                     <Form
                         name="basic"
@@ -46,8 +46,10 @@ function Navbar() {
                         onFinish={onFinish}
                         onFinishFailed={onFinishFailed}
                         autoComplete="off"
+                        style={{display: "flex", flexDirection: "row", gap:"12px", alignItems:"center"}}
                     >
                         <Form.Item
+                        style={{margin:0}}
                             name="username"
                             rules={[
                                 {
@@ -61,6 +63,7 @@ function Navbar() {
                         </Form.Item>
 
                         <Form.Item
+                            style={{margin:0}}
                             name="password"
                             rules={[
                                 {
@@ -76,17 +79,18 @@ function Navbar() {
 
 
                         <Form.Item
+                        style={{margin:0}}
                             wrapperCol={{
                                 offset: 8,
                                 span: 16,
                             }}
                         >
                             <Button type="primary" htmlType="submit">
-                                Submit
+                                Intra
                             </Button>
                         </Form.Item>
                     </Form>
-                    <Link to="/sign-up">Autentifica</Link>
+                    <Link to="/sign-up"></Link>
                 </Col>
             </Row>
         </nav>
