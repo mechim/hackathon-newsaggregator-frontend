@@ -28,7 +28,9 @@ function Navbar() {
         <nav className='navbar'>
             <Row>
                 <Col span={6}>
-                    <Link to="/news">Acasă</Link>
+                    <Link to="/news">
+                        <h1 style={{color:"white", fontFamily:"Lucinda Console", fontSize:"12px", marginLeft:"5%"}}>onClick</h1>
+                    </Link>
                 </Col>
 
                 <Col
