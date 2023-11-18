@@ -8,14 +8,50 @@
     height: 100%;
     margin-left: 30%;
     background: #3D5A80;
+    align-items: right;
+    justify-content: center;
     
 }
 
+.box1{
+    position: absolute;
+    height: 100%;
+    width: 30%;
+    background: #c8d6ea;
+}
+
 .input_name{
+    position: relative ; 
     font-family: 'Istok Web', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 46px;
+    color: white;
 }
 
+.header{
+
+    position: static;
+    font-weight: 300;
+    font-size: 96px; 
+    text-align: center;
+    color: white;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20%;
+    margin-top: 10%;
+}
+
+.input_wraper{
+    align-content: center;
+}
+
+.register_button{
+    display: flex;
+    flex-direction: column;
+    margin-right: 20%;
+}
