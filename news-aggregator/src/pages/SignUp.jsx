@@ -2,6 +2,7 @@ import React, { useState} from 'react';
 import { Form, Input, Button } from 'antd';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import './SignUp.css'
 function SignUp() {
     const [hasResponse, setHasResponse] = useState(false);
     const navigate = useNavigate();
@@ -19,9 +20,15 @@ function SignUp() {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+
+    const [requiredMark, setRequiredMarkType] = useState('optional');
+    const onRequiredTypeChange = ({ requiredMarkValue }) => {
+      setRequiredMarkType(requiredMarkValue);
+    };
+
     return (
-        <>
-            <Form
+        <div className='background_box'>
+            <Form 
                 name="basic"
                 labelCol={{
                     span: 8,
@@ -30,17 +37,23 @@ function SignUp() {
                     span: 16,
                 }}
                 style={{
+                    marginTop: "30%",
+                    marginLeft: "25%",
                     maxWidth: 600,
                 }}
                 initialValues={{
                     remember: true,
+                    requiredMarkValue: requiredMark,
                 }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
+                colon = {false}
+                requiredMark={requiredMark === 'customize' ? customizeRequiredMark : requiredMark}
             >
                 <Form.Item
-                    label="Username"
+                    className = 'input_name'
+                    label={<span className='input_name'>Username</span>}
                     name="username"
                     rules={[
                         {
@@ -48,11 +61,20 @@ function SignUp() {
                             message: 'Please input your username!',
                         },
                     ]}
+                    
+                    // style = {{
+                    //     fontFamily: 'Istok Web',
+                    //     fontStyle: normal,
+                    //     fontWeight: 400,
+                    //     fontSize: "32px",
+                    //     lineHeight: "46px",
+                    // }}
                 >
                     <Input />
                 </Form.Item>
 
                 <Form.Item
+                    
                     label="Email"
                     name="email"
                     rules={[
@@ -67,6 +89,7 @@ function SignUp() {
                 </Form.Item>
 
                 <Form.Item
+                   
                     label="Password"
                     name="password"
                     rules={[
@@ -93,7 +116,7 @@ function SignUp() {
             </Form>
 
 
-        </>
+        </div>
     )
 }
 
