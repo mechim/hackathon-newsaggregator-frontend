@@ -39,7 +39,8 @@ function SignUp() {
                 style={{
                     marginTop: "30%",
                     marginLeft: "25%",
-                    maxWidth: 600,
+                    maxWidth: "60%",
+                    alignItems: "center",
                 }}
                 initialValues={{
                     remember: true,
