@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
+import Poll from '../components/Poll';
+import {Spin} from 'antd';
 function Article() {
     const [post, setPost] = useState({});
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         fetchData();
     }, [])
@@ -18,6 +21,7 @@ function Article() {
             await axios.get('http://127.0.0.1:8000/posts/get-post/57', {headers}).then((res) => {
                 console.log(res.data['post']);
                 setPost(res.data['post']);
+                setLoading(true);
             });
         } catch (e){
             console.error('error in fetchin article', e);
@@ -27,10 +31,17 @@ function Article() {
     return(
         <>
         <Navbar/>
-        <h1>{post.title}</h1>
+        {loading && post? <>
+            <h1>{post.title}</h1>
         <p>{post.body}</p>
         <a href={post.link}>{post.link}</a>
         <p>{post.timestamp}</p>
+        {post.polls_attached && post.polls_attached.map(
+             poll => <Poll key ={poll.id} pollData={poll}/>
+        )}
+       
+        </>: <Spin/>}
+       
         </>
     )
 }
