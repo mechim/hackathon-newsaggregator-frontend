@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Col, Row, Button, Layout, Form, Input } from 'antd';
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -6,14 +6,14 @@ import axios from 'axios';
 function Navbar() {
     const [hasResponse, setHasResponse] = useState(false);
     const navigate = useNavigate();
-    const onFinish = async(values) => {
+    const onFinish = async (values) => {
         const request = await axios.post('http://127.0.0.1:8000/authen/sign-in', values).then((res) => {
             console.log(res.data.tokens['access']);
             localStorage.setItem('access-token', res.data.tokens['access']);
             localStorage.setItem('refresh-token', res.data.tokens['refresh']);
             setHasResponse(true);
             navigate('/news');
-        }).catch((e) =>{
+        }).catch((e) => {
             console.error(e);
         });
         // console.log('Success:', values);
@@ -22,12 +22,12 @@ function Navbar() {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-    
+
     return (
-        <nav style={{display: "flex", flexDirection: "row", gap:"12px"}}>
+        <nav style={{ display: "flex", flexDirection: "row", gap: "12px", backgroundColor: "#3d5a80", padding: 10 }}>
             <Row>
                 <Col></Col>
-                <Col style={{display: "flex", flexDirection: "row", gap:"12px", alignItems:"center"}}>
+                <Col style={{ display: "flex", flexDirection: "row", gap: "12px", alignItems: "center" }}>
                     <Link to="/news">Acasa</Link>
                     <Form
                         name="basic"
@@ -46,10 +46,10 @@ function Navbar() {
                         onFinish={onFinish}
                         onFinishFailed={onFinishFailed}
                         autoComplete="off"
-                        style={{display: "flex", flexDirection: "row", gap:"12px", alignItems:"center"}}
+                        style={{ display: "flex", flexDirection: "row", gap: "12px", alignItems: "center" }}
                     >
                         <Form.Item
-                        style={{margin:0}}
+                            style={{ margin: 0 }}
                             name="username"
                             rules={[
                                 {
@@ -59,11 +59,11 @@ function Navbar() {
                             ]}
                         >
                             <Input
-                            placeholder='username' />
+                                placeholder='username' />
                         </Form.Item>
 
                         <Form.Item
-                            style={{margin:0}}
+                            style={{ margin: 0 }}
                             name="password"
                             rules={[
                                 {
@@ -72,14 +72,14 @@ function Navbar() {
                                 },
                             ]}
                         >
-                            <Input.Password 
-                            placeholder='password'
+                            <Input.Password
+                                placeholder='password'
                             />
                         </Form.Item>
 
 
                         <Form.Item
-                        style={{margin:0}}
+                            style={{ margin: 0 }}
                             wrapperCol={{
                                 offset: 8,
                                 span: 16,
@@ -90,7 +90,11 @@ function Navbar() {
                             </Button>
                         </Form.Item>
                     </Form>
-                    <Link to="/sign-up"></Link>
+                    <Link to="/sign-up" style={{ marginLeft: 30 }}>
+                        <Button type="primary" >
+                            Autentifica-te
+                        </Button>
+                    </Link>
                 </Col>
             </Row>
         </nav>
