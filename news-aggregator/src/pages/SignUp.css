@@ -31,7 +31,6 @@
 }
 
 .header{
-
     position: static;
     font-weight: 300;
     font-size: 96px; 
@@ -40,6 +39,7 @@
 }
 
 .form {
+
     display: flex;
     flex-direction: column;
     margin-right: 20%;
@@ -47,7 +47,19 @@
 }
 
 .input_wraper{
+    margin-top: -2%;
     align-content: center;
 }
 
-.register_button{}
+
+.button-styles {
+    text-align: center;
+    font-size: 24px;
+    margin-left: 30%;
+    margin-top: 5%;
+    width: 40%;
+    height: 60%;
+    background-color: #c8d6ea;
+    color: black;
+    font-weight: 450;
+}
