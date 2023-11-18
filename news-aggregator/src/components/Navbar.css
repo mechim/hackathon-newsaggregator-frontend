@@ -1,7 +1,9 @@
 .navbar{
+    height: 30px;
     background-color: #3d5a80;
     padding: 13px;
     align-items: center;
+    
 }
 
 .col2{

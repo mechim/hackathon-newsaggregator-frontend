@@ -12,28 +12,28 @@ function Article() {
         fetchData();
     }, [])
 
-    const fetchData = async() => {
-        try{
+    const fetchData = async () => {
+        try {
             const token = await localStorage.getItem('access-token');
             const headers = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
             };
-            await axios.get('http://127.0.0.1:8000/posts/get-post/57', {headers}).then((res) => {
+            await axios.get('http://127.0.0.1:8000/posts/get-post/'+localStorage.getItem('post'), { headers }).then((res) => {
                 console.log(res.data['post']);
                 setPost(res.data['post']);
-                setLoading(true);
+                setLoading(false);
             });
-        } catch (e){
+        } catch (e) {
             console.error('error in fetchin article', e);
         }
-        
+
     }
-    return(
+    return (
         <>
         <Navbar/>
-        {loading && post? 
+        {!loading && post? 
         <>
         <Card className='post-wrapper'>
             <h1 className='post-header'>{post.title}</h1>
@@ -46,8 +46,11 @@ function Article() {
                 poll => <Poll key ={poll.id} pollData={poll}/>
             )}
         </div>
-        </>: <Spin/>}
-       
+        
+        </> : <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
+            <Spin />
+              </div>}
+
         </>
     )
 }
