@@ -12,24 +12,37 @@ function Cabinet() {
         fetchData();
     }, [])
     const [checkedTags, setCheckedTags] = useState([]);
-    console.log(checkedTags);
+
+    // console.log(checkedTags);
     const getChangeHandler = tagName => () => {
         if (checkedTags.includes(tagName)) {
-            setCheckedTags(prev => prev.filter(tag => tag !== tagName));
+            setCheckedTags(prev => [...prev, prev.filter(tag => tag !== tagName)]);
         } else {
             setCheckedTags(prev => [...prev, tagName]);
         }
     }
 
     useEffect(() => {
-        console.log(data);
-        // if (data != undefined)
+        // console.log(data);
+        if (data != undefined){
+            console.log(data.user['subscriptions']);
+            data.user['subscriptions'].forEach(element => {
+                //const updatedChekedTags = [...checkedTags, element['name']];
+                setCheckedTags(prev => [...prev.filter(tag => tag !== element['name']), element['name']]);
+                // console.log(checkedTags)
+            });
+        }
         //     setCheckedTags(data.user['subscriptions']);
     }, [data])
+    // console.log(checkedTags);
 
     useEffect(() => {
-        console.log(tags);
-    }, [tags])
+        console.log(checkedTags);
+    }, [checkedTags])
+
+    // useEffect(() => {
+    //     console.log(tags);
+    // }, [tags])
     const fetchData = async () => {
         try {
             const token = await localStorage.getItem('access-token');
@@ -51,7 +64,7 @@ function Cabinet() {
         try {
             setLoading(true);
             await axios.get('http://127.0.0.1:8000/tags/get').then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 setTags(res.data.tags);
                 setLoading(false);
             })
@@ -69,7 +82,7 @@ function Cabinet() {
         };
         try {
             await axios.post('http://127.0.0.1:8000/users/update-subs', {"tags": checkedTags}, { headers }).then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
             })
         } catch (e) {
             console.error(e);
