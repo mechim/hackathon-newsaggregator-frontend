@@ -3,7 +3,7 @@ import { Button, Select } from 'antd';
 
 const { Option } = Select;
 
-const PollComponent = (pollData) => {
+const PollComponent = (props) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleVote = () => {
@@ -14,7 +14,7 @@ const PollComponent = (pollData) => {
 
   return (
     <div>
-      <h3>{pollData.title}</h3>
+      <h3>{props.pollData.title}</h3>
 
       <label>Select an option:</label>
       <Select
@@ -22,7 +22,7 @@ const PollComponent = (pollData) => {
         onChange={(value) => setSelectedOption(value)}
         placeholder="Select an option"
       >
-        {pollData.options.map((option, index) => (
+        {props.pollData.options.map((option, index) => (
           <Option key={index} value={option}>
             {option}
           </Option>
