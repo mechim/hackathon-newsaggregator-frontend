@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Col, Row, Button, Layout, Form, Input, Spin } from 'antd';
 import { Link, useNavigate } from "react-router-dom";
+import './Navbar.css';
 import axios from 'axios';
 
 function Navbar() {
@@ -24,79 +25,86 @@ function Navbar() {
     };
 
     return (
-        <nav style={{ display: "flex", flexDirection: "row", gap: "12px", backgroundColor: "#3d5a80", padding: 10 }}>
+        <nav className='navbar'>
             <Row>
-                <Col></Col>
-                <Col style={{ display: "flex", flexDirection: "row", gap: "12px", alignItems: "center" }}>
+                <Col  span={6}>
                     <Link to="/news">Acasa</Link>
-                    {localStorage.getItem('access-token')? (
+                </Col>
 
-                        <Link to= "/cabinet">Cabinet</Link>
-                    ):  <Form
-                    name="basic"
-                    // labelCol={{
-                    //     span: 8,
-                    // }}
-                    // wrapperCol={{
-                    //     span: 16,
-                    // }}
-                    // style={{
-                    //     maxWidth: 600,
-                    // }}
-                    initialValues={{
-                        remember: true,
-                    }}
-                    onFinish={onFinish}
-                    onFinishFailed={onFinishFailed}
-                    autoComplete="off"
-                    style={{ display: "flex", flexDirection: "row", gap: "12px", alignItems: "center" }}
+                <Col
+                    className='col2'
+                    span={18}
                 >
-                    <Form.Item
-                        style={{ margin: 0 }}
-                        name="username"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your username!',
-                            },
-                        ]}
-                    >
-                        <Input
-                            placeholder='username' />
-                    </Form.Item>
 
-                    <Form.Item
-                        style={{ margin: 0 }}
-                        name="password"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your password!',
-                            },
-                        ]}
-                    >
-                        <Input.Password
-                            placeholder='password'
-                        />
-                    </Form.Item>
+                    {localStorage.getItem('access-token') ? (
 
+                        <Link to="/cabinet">Cabinet</Link>
+                    ) : <Form
 
-                    <Form.Item
-                        style={{ margin: 0 }}
-                        wrapperCol={{
-                            offset: 8,
-                            span: 16,
+                        name="basic"
+                        // labelCol={{
+                        //     span: 8,
+                        // }}
+                        // wrapperCol={{
+                        //     span: 16,
+                        // }}
+                        // style={{
+                        //     maxWidth: 600,
+                        // }}
+                        initialValues={{
+                            remember: true,
                         }}
+                        onFinish={onFinish}
+                        onFinishFailed={onFinishFailed}
+                        autoComplete="off"
+                        style={{ display: "flex", flexDirection: "row", gap: "12px", alignItems: "center" }}
                     >
-                        <Button type="primary" htmlType="submit">
-                            Intra
-                        </Button>
-                    </Form.Item>
-                </Form>}
-                   
+                        <Form.Item
+                            style={{ margin: 0 }}
+                            name="username"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your username!',
+                                },
+                            ]}
+                        >
+                            <Input
+                                placeholder='login' />
+                        </Form.Item>
+
+                        <Form.Item
+                            style={{ margin: 0 }}
+                            name="password"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your password!',
+                                },
+                            ]}
+                        >
+                            <Input.Password
+                                placeholder='parola'
+                            />
+                        </Form.Item>
+
+
+                        <Form.Item
+                            style={{ margin: 0 }}
+                            wrapperCol={{
+                                offset: 8,
+                                span: 16,
+                            }}
+                        >
+                            <Button type="primary" htmlType="submit">
+                                Intră
+                            </Button>
+                        </Form.Item>
+                    </Form>}
+
                     <Link to="/sign-up" style={{ marginLeft: 30 }}>
                         <Button type="primary" >
-                            Autentifica-te
+                            Autentifică-te
                         </Button>
                     </Link>
                 </Col>

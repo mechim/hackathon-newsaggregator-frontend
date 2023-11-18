@@ -50,8 +50,4 @@
     align-content: center;
 }
 
-.register_button{
-    display: flex;
-    flex-direction: column;
-    margin-right: 20%;
-}
+.register_button{}

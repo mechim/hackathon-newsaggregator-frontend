@@ -109,7 +109,7 @@ function SignUp() {
                                 span: 16,
                             }}
                         >
-                            <Button type="primary" htmlType="submit" className="register_button">
+                            <Button type="primary" htmlType="submit" >
                                 Submit
                             </Button>
                         </Form.Item>
