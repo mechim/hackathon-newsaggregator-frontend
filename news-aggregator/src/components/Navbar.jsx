@@ -28,7 +28,7 @@ function Navbar() {
         <nav className='navbar'>
             <Row>
                 <Col span={6}>
-                    <Link to="/news">Acasa</Link>
+                    <Link to="/news">Acasă</Link>
                 </Col>
 
                 <Col
