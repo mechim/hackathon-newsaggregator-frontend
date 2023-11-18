@@ -16,7 +16,7 @@ function Cabinet() {
     // console.log(checkedTags);
     const getChangeHandler = tagName => () => {
         if (checkedTags.includes(tagName)) {
-            setCheckedTags(prev => [...prev, prev.filter(tag => tag !== tagName)]);
+            setCheckedTags(prev => [...prev.filter(tag => tag !== tagName)]);
         } else {
             setCheckedTags(prev => [...prev, tagName]);
         }
