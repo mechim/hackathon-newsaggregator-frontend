@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
 import Poll from '../components/Poll';
-import {Spin} from 'antd';
+import { Spin } from 'antd';
 function Article() {
     const [post, setPost] = useState({});
     const [loading, setLoading] = useState(true);
@@ -10,38 +10,40 @@ function Article() {
         fetchData();
     }, [])
 
-    const fetchData = async() => {
-        try{
+    const fetchData = async () => {
+        try {
             const token = await localStorage.getItem('access-token');
             const headers = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json', // Adjust content type as needed
                 'Authorization': 'Bearer ' + token
             };
-            await axios.get('http://127.0.0.1:8000/posts/get-post/57', {headers}).then((res) => {
+            await axios.get('http://127.0.0.1:8000/posts/get-post/'+localStorage.getItem('post'), { headers }).then((res) => {
                 console.log(res.data['post']);
                 setPost(res.data['post']);
-                setLoading(true);
+                setLoading(false);
             });
-        } catch (e){
+        } catch (e) {
             console.error('error in fetchin article', e);
         }
-        
+
     }
-    return(
+    return (
         <>
-        <Navbar/>
-        {loading && post? <>
-            <h1>{post.title}</h1>
-        <p>{post.body}</p>
-        <a href={post.link}>{post.link}</a>
-        <p>{post.timestamp}</p>
-        {post.polls_attached && post.polls_attached.map(
-             poll => <Poll key ={poll.id} pollData={poll}/>
-        )}
-       
-        </>: <Spin/>}
-       
+            <Navbar />
+            {!loading ? <>
+                <h1>{post.title}</h1>
+                <p>{post.body}</p>
+                <a href={post.link}>{post.link}</a>
+                <p>{post.timestamp}</p>
+                {post.polls_attached && post.polls_attached.map(
+                    poll => <Poll key={poll.id} pollData={poll} />
+                )}
+
+            </> : <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
+                <Spin />
+            </div>}
+
         </>
     )
 }

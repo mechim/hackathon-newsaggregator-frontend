@@ -15,6 +15,10 @@ function News() {
     useEffect(() => {
         sortData();
     }, [posts])
+
+    const onClickArticle = async(id) => {
+        localStorage.setItem('post', id);
+    }
     const fetchNews = async () => {
         try {
             const token = await localStorage.getItem('access-token');
@@ -47,7 +51,7 @@ function News() {
                 <Spin />
             </> : <>
                 {sortedPosts && sortedPosts.map(
-                    post => <Link to='/article'><h3 key={post.id}>{post.title} - {post.timestamp}</h3></Link>
+                    post => <Link to='/article' onClick={() => onClickArticle(post.id)}><h3 key={post.id}>{post.title} - {post.timestamp}</h3></Link>
                 )}
             </>}
         </>
