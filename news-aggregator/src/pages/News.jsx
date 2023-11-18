@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import Navbar from '../components/Navbar'
+import CreatePoll from '../components/CreatePoll';
 function News() {
     useEffect(() => {
         fetchNews();
@@ -25,6 +26,7 @@ function News() {
         <>
         <Navbar/>
             <h1>Nesw</h1>
+            <CreatePoll></CreatePoll>
         </>
     )
 }

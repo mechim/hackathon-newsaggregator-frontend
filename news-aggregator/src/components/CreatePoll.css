@@ -1,0 +1,25 @@
+.create-poll-wrapper {
+
+    .form-header {
+        text-align: center;
+        padding-left: 3.5%;
+    }
+
+    .form-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .form-title {
+            padding-left: 1.25%;
+        }
+
+        .add-option {
+            margin-left: 23%;
+        }
+
+        .post-button {
+            margin-left: 40%;
+        }
+    }
+}
