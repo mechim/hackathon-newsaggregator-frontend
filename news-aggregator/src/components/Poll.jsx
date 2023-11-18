@@ -1,38 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Select } from 'antd';
-
-const { Option } = Select;
+import React, { useState } from 'react';
+import { Button, Radio, Card } from 'antd';
+import './Poll.css'
 
 const PollComponent = (props) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
+  const handleOptionChange = (e) => {
+    setSelectedOption(e.target.value);
+  };
+
   const handleVote = () => {
     if (selectedOption !== null) {
-     
+      console.log(`Voted for ${props.pollData['options'][selectedOption]}`);
+    } else {
+      console.log('Please select an option before voting.');
     }
   };
 
   return (
-    <div>
-      <h3>{props.pollData.title}</h3>
-
-      <label>Select an option:</label>
-      <Select
-        value={selectedOption}
-        onChange={(value) => setSelectedOption(value)}
-        placeholder="Select an option"
-      >
-        {props.pollData.options.map((option, index) => (
-          <Option key={index} value={option}>
+    <Card className='poll-wrapper' title={props.pollData.title}>
+      <Radio.Group className='poll-options' onChange={handleOptionChange} value={selectedOption}>
+        {props.pollData['options'].map((option, index) => (
+          <Radio className='poll-option' key={index} value={index}>
             {option}
-          </Option>
+          </Radio>
         ))}
-      </Select>
-
-      <Button type="primary" onClick={handleVote} disabled={selectedOption === null}>
+      </Radio.Group>
+      <Button className='poll-button' type="primary" onClick={handleVote}>
         Vote
       </Button>
-    </div>
+    </Card>
   );
 };
 

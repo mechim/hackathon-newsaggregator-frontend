@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
 import Poll from '../components/Poll';
-import {Spin} from 'antd';
+import {Card, Spin} from 'antd';
+import './Article.css'
+
 function Article() {
     const [post, setPost] = useState({});
     const [loading, setLoading] = useState(true);
@@ -15,7 +17,7 @@ function Article() {
             const token = await localStorage.getItem('access-token');
             const headers = {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json', // Adjust content type as needed
+                'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
             };
             await axios.get('http://127.0.0.1:8000/posts/get-post/57', {headers}).then((res) => {
@@ -31,15 +33,19 @@ function Article() {
     return(
         <>
         <Navbar/>
-        {loading && post? <>
-            <h1>{post.title}</h1>
-        <p>{post.body}</p>
-        <a href={post.link}>{post.link}</a>
-        <p>{post.timestamp}</p>
-        {post.polls_attached && post.polls_attached.map(
-             poll => <Poll key ={poll.id} pollData={poll}/>
-        )}
-       
+        {loading && post? 
+        <>
+        <Card className='post-wrapper'>
+            <h1 className='post-header'>{post.title}</h1>
+            <p className='post-date'>{post.timestamp}</p>
+            <p className='post-body'>{post.body}</p>
+            <p className='post-link'>Citește mai mult aici: <a href={post.link}>{post.link}</a></p>
+        </Card>
+        <div>
+            {post.polls_attached && post.polls_attached.map(
+                poll => <Poll key ={poll.id} pollData={poll}/>
+            )}
+        </div>
         </>: <Spin/>}
        
         </>

@@ -1,0 +1,28 @@
+.post-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 1%;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: #e4ebf4;
+
+    .post-title {
+        color: #3D5A80;
+    }
+
+    .post-date {
+        text-align: right;
+        padding-right: 5%;
+        margin-top: -2%;
+        font-size: large;
+    }
+
+    .post-body {
+        font-size: large;
+    }
+
+    .post-link {
+        font-size: large;
+    }
+}
