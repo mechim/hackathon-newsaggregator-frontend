@@ -56,7 +56,7 @@ function SignUp() {
                  
                     <div className='input_wraper'>
                         <Form.Item
-                            className='input_name'
+                            
                             label={<span className='input_name'>Login</span>}
                             name="username"
                             rules={[
@@ -109,8 +109,8 @@ function SignUp() {
                                 span: 16,
                             }}
                         >
-                            <Button type="primary" htmlType="submit" >
-                                Submit
+                            <Button type="primary" htmlType="submit" className="button-styles">
+                               <span style={{}}>Registrare</span> 
                             </Button>
                         </Form.Item>
                     </div>
