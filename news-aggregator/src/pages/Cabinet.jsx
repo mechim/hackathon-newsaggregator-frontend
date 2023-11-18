@@ -1,20 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
-import { Spin } from 'antd';
+import { Spin, Checkbox, Button } from 'antd';
 
 
 function Cabinet() {
     const [data, setData] = useState();
     const [loading, setLoading] = useState(true);
-    const [topics, setTopics] = useState([]);
+    const [tags, setTags] = useState([]);
     useEffect(() => {
         fetchData();
     }, [])
+    const [checkedTags, setCheckedTags] = useState([]);
+    console.log(checkedTags);
+    const getChangeHandler = tagName => () => {
+        if (checkedTags.includes(tagName)) {
+            setCheckedTags(prev => prev.filter(tag => tag !== tagName));
+        } else {
+            setCheckedTags(prev => [...prev, tagName]);
+        }
+    }
 
     useEffect(() => {
         console.log(data);
+        // if (data != undefined)
+        //     setCheckedTags(data.user['subscriptions']);
     }, [data])
+
+    useEffect(() => {
+        console.log(tags);
+    }, [tags])
     const fetchData = async () => {
         try {
             const token = await localStorage.getItem('access-token');
@@ -37,12 +52,29 @@ function Cabinet() {
             setLoading(true);
             await axios.get('http://127.0.0.1:8000/tags/get').then((res) => {
                 console.log(res.data);
+                setTags(res.data.tags);
                 setLoading(false);
             })
         } catch (error) {
             setLoading(false);
             console.error('Error fetching data', error);
         }
+    }
+    const SubscribeUser = async () => {
+        const token = await localStorage.getItem('access-token');
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json', // Adjust content type as needed
+            'Authorization': 'Bearer ' + token
+        };
+        try {
+            await axios.post('http://127.0.0.1:8000/users/update-subs', {"tags": checkedTags}, { headers }).then((res) => {
+                console.log(res.data)
+            })
+        } catch (e) {
+            console.error(e);
+        }
+        
     }
     return (
         <>
@@ -51,8 +83,16 @@ function Cabinet() {
             {!loading && data.user ? <>
                 <h1>{data.user['username']}</h1>
                 <h1>{data.user['email']}</h1>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                    {
+                        tags && tags.map(
+                            tag => <Checkbox checked={checkedTags.includes(tag.name)} onChange={getChangeHandler(tag.name)} key={tag.name}>{tag.name}</Checkbox>
+                        )
+                    }
+                </div>
+                <Button type='primary' onClick={() => SubscribeUser() }>Aboneaza-te</Button>
             </> :
-                <Spin/>
+                <Spin />
             }
 
         </>
