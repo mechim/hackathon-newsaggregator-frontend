@@ -27,7 +27,7 @@ function Navbar() {
     return (
         <nav className='navbar'>
             <Row>
-                <Col  span={6}>
+                <Col span={6}>
                     <Link to="/news">Acasa</Link>
                 </Col>
 
@@ -39,74 +39,79 @@ function Navbar() {
                     {localStorage.getItem('access-token') ? (
 
                         <Link to="/cabinet">Cabinet</Link>
-                    ) : <Form
+                    ) :
+                        <>
+                            <Form
 
-                        name="basic"
-                        // labelCol={{
-                        //     span: 8,
-                        // }}
-                        // wrapperCol={{
-                        //     span: 16,
-                        // }}
-                        // style={{
-                        //     maxWidth: 600,
-                        // }}
-                        initialValues={{
-                            remember: true,
-                        }}
-                        onFinish={onFinish}
-                        onFinishFailed={onFinishFailed}
-                        autoComplete="off"
-                        style={{ display: "flex", flexDirection: "row", gap: "12px", alignItems: "center" }}
-                    >
-                        <Form.Item
-                            style={{ margin: 0 }}
-                            name="username"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input your username!',
-                                },
-                            ]}
-                        >
-                            <Input
-                                placeholder='login' />
-                        </Form.Item>
+                                name="basic"
+                                // labelCol={{
+                                //     span: 8,
+                                // }}
+                                // wrapperCol={{
+                                //     span: 16,
+                                // }}
+                                // style={{
+                                //     maxWidth: 600,
+                                // }}
+                                initialValues={{
+                                    remember: true,
+                                }}
+                                onFinish={onFinish}
+                                onFinishFailed={onFinishFailed}
+                                autoComplete="off"
+                                style={{ display: "flex", flexDirection: "row", gap: "12px", alignItems: "center" }}
+                            >
+                                <Form.Item
+                                    style={{ margin: 0 }}
+                                    name="username"
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: 'Please input your username!',
+                                        },
+                                    ]}
+                                >
+                                    <Input
+                                        placeholder='login' />
+                                </Form.Item>
 
-                        <Form.Item
-                            style={{ margin: 0 }}
-                            name="password"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input your password!',
-                                },
-                            ]}
-                        >
-                            <Input.Password
-                                placeholder='parola'
-                            />
-                        </Form.Item>
+                                <Form.Item
+                                    style={{ margin: 0 }}
+                                    name="password"
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: 'Please input your password!',
+                                        },
+                                    ]}
+                                >
+                                    <Input.Password
+                                        placeholder='parola'
+                                    />
+                                </Form.Item>
 
 
-                        <Form.Item
-                            style={{ margin: 0 }}
-                            wrapperCol={{
-                                offset: 8,
-                                span: 16,
-                            }}
-                        >
-                            <Button type="primary" htmlType="submit">
-                                Intră
-                            </Button>
-                        </Form.Item>
-                    </Form>}
+                                <Form.Item
+                                    style={{ margin: 0 }}
+                                    wrapperCol={{
+                                        offset: 8,
+                                        span: 16,
+                                    }}
+                                >
+                                    <Button type="primary" htmlType="submit">
+                                        Intră
+                                    </Button>
+                                </Form.Item>
+                            </Form>
+                            <Link to="/sign-up" style={{ marginLeft: 30 }}>
+                                <Button type="primary" >
+                                    Autentifică-te
+                                </Button>
+                            </Link>
+                        </>
+                    }
 
-                    <Link to="/sign-up" style={{ marginLeft: 30 }}>
-                        <Button type="primary" >
-                            Autentifică-te
-                        </Button>
-                    </Link>
+
                 </Col>
             </Row>
         </nav>
