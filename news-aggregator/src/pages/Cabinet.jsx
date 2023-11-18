@@ -1,9 +1,14 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
 
 function Cabinet () {
 
     return(
-        <><h1>Cabinet</h1></>
+        <>
+        <Navbar/>
+        <h1>Nickname</h1>
+        <h1>Email</h1>
+        </>
     )
 }
 
