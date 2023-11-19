@@ -8,11 +8,14 @@ const { Meta } = Card;
 function Petitions() {
     const [loading, setLoading] = useState(true);
     const [petitions, setPetitions] = useState([]);
+    const [creating, setCreating] = useState(false);
 
     useEffect(() => {
         fetchPetitions();
     }, [])
-
+    const handleCreate = async () => {
+        
+    }
     const handleSubscription = async (id) => {
         try {
             const token = await localStorage.getItem('access-token');
