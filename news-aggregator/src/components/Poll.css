@@ -6,7 +6,10 @@
     margin-top: 1%;
     margin-left: 20%;
     margin-right: 20%;
-    font-size: large;
+
+    .ant-card-head-title {
+        font-size: 20px;
+    }
 
     .poll-options {
         display: flex;

@@ -26,3 +26,15 @@
         font-size: large;
     }
 }
+
+.create-poll-block {
+    margin-top: 1%;
+    margin-left: 20%;
+    margin-right: 20%;
+
+    .poll-create-button {
+        margin-left: 5%;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+}

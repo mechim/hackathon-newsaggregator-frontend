@@ -4,7 +4,7 @@ import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import "./CreatePoll.css"
 
-const CreatePoll = () => {
+const CreatePoll = (props) => {
   const [form] = Form.useForm();
   const [options, setOptions] = useState(['', '']);
 
@@ -17,14 +17,12 @@ const CreatePoll = () => {
             'Authorization': 'Bearer ' + token
         };
 
-        const postData = {
+        const pollData = {
             title: values.title,
             options: values.options.map((option) => option.option),
         };
 
-        console.log(postData)
-
-        await axios.post('http://127.0.0.1:8000/polls/create', postData, { headers }).then((res) => {
+        await axios.post(`http://127.0.0.1:8000/polls/create/${props.postId}`, pollData, { headers }).then((res) => {
             console.log(res.data)
         })
     } catch (error) {
@@ -80,9 +78,8 @@ const CreatePoll = () => {
                   )}
                 </Space>
               ))}
-              <Form.Item className="form-item">
+              <Form.Item>
                 <Button
-                  className='add-option'
                   type="dashed"
                   onClick={() => {
                     add();
@@ -97,8 +94,8 @@ const CreatePoll = () => {
           )}
         </Form.List>
 
-        <Form.Item className="form-item" >
-          <Button className='post-button' type="primary" htmlType="submit">
+        <Form.Item >
+          <Button type="primary" htmlType="submit">
             Postează
           </Button>
         </Form.Item>

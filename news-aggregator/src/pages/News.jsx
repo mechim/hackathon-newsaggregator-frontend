@@ -16,7 +16,7 @@ function News() {
         sortData();
     }, [posts])
 
-    const onClickArticle = async(id) => {
+    const onClickArticle = async (id) => {
         localStorage.setItem('post', id);
     }
     const fetchNews = async () => {
@@ -48,7 +48,9 @@ function News() {
         <>
             <Navbar />
             {loading ? <>
-                <Spin />
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
+                    <Spin />
+                </div>
             </> : <>
                 {sortedPosts && sortedPosts.map(
                     post => <Link to='/article' onClick={() => onClickArticle(post.id)}><h3 key={post.id}>{post.title} - {post.timestamp}</h3></Link>
