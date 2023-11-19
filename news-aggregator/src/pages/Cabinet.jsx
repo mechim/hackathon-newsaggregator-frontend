@@ -91,19 +91,21 @@ function Cabinet() {
 
     }
     return (
-        <>
+        <div style={{backgroundColor:"#3d5a80", paddingBottom:"24.5%"}}>
             <Navbar />
 
-            <div className='container'>
+            <div className='container_cabinet'>
                 {!loading && data.user ? (
                     <>
-                        <div >
+                        <div className='text_cabinet' >
 
                             <h1>Login: {data.user['username']}</h1>
                             <h1>Email: {data.user['email']}</h1>
                         </div>
 
-                        <div span={12} style={{ display: "flex", flexDirection: "column", marginTop: "15%", marginLeft: "30%", width: "30%" }}>
+                        <div 
+                        style={{ display: "flex", flexDirection: "column", marginTop: "-15%", marginLeft: "60%", width: "30%" }}
+                        >
                             <h1>Categorii</h1>
                             {tags &&
                                 tags.map((tag) => (
@@ -134,7 +136,7 @@ function Cabinet() {
                     </div>
                 )}
             </div>
-        </>
+        </div>
     );
 }
 

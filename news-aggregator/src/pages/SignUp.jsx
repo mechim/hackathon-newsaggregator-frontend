@@ -10,7 +10,7 @@ function SignUp() {
         const request = await axios.post('http://127.0.0.1:8000/authen/sign-up', values).then((res) => {
             console.log(res.data);
             setHasResponse(true);
-            navigate('/cabinet');
+            navigate('/news');
         }).catch((e) => {
             console.error(e);
         });

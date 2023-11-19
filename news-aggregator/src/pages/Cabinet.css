@@ -1,11 +1,33 @@
-.container{
+.container_cabinet {
     background-color: #c8d6ea;
-    margin-top: 20%;
+    margin-top: 5%;
+    margin-left: 15%;
+    width: 70%;
+    height: 80%;
+    padding-bottom: 5%;
+    padding-top: 3%;
+
+
+    .text_cabinet {
+        padding-top: 3%;
+        margin-left: 5%;
+    }
+
+    .category_form {
+        margin-left: 20%;
+    }
+
+    .tag-checkbox {
+        margin-bottom: 10px;
+    }
+
+    .spin-cabinet {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80%;
+        padding-bottom: 5%;
+        padding-top: 3%;
+    }
 }
-  .spin-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-  }
-  
+
