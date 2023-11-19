@@ -26,7 +26,7 @@ const items = [
 const rootSubmenuKeys = ['sub1'];
 
 const MenuBar = () => {
-  const [openKeys, setOpenKeys] = useState(['sub1']);
+  const [openKeys, setOpenKeys] = useState([]); // Change the initial state to an empty array
 
   const onOpenChange = (keys) => {
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
@@ -77,4 +77,3 @@ const MenuBar = () => {
 };
 
 export default MenuBar;
-git 
