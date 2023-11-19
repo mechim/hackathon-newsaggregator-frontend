@@ -5,6 +5,7 @@ import  SignUp  from './pages/SignUp'
 import Cabinet from './pages/Cabinet'
 import News from './pages/News'
 import Article from './pages/Article'
+import Petitions from './pages/Petitions'
 
 
 
@@ -26,6 +27,7 @@ function App() {
       <Route path='/cabinet' element = { <Cabinet />} />
       <Route path='/news' element = { <News />} />
       <Route path='/article' element = { <Article />} />
+      <Route path='/petitions' element ={ <Petitions/>}/>
     </Routes>
   </Router>
   

@@ -47,6 +47,7 @@ const MenuBar = () => {
         backgroundColor: '#3d5a80',
         color: 'white',
         fontWeight: 'bold',
+        zIndex: 10
       }}
     >
       {items.map((item) => {
