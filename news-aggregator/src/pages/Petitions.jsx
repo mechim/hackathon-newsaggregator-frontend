@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Spin, Card, Form , Input} from 'antd';
 import Navbar from "../components/Navbar";
 import axios from 'axios';
+import './Petitions.css'
 
 const { Meta } = Card;
 
@@ -80,19 +81,12 @@ function Petitions() {
                     <Spin />
                 </div>
             ) : (
-                <>
-                    <h1>Petitii active</h1>
-                    <Button type="primary" style={{ marginBottom: '16px' }} onClick={() => handleCreate()}>Creaza Petitie</Button>
-                    {creating ? <div>
+                <div>
+                    <h2 style={{paddingLeft: '2%'}}>Petiții active</h2>
+                    <Button type="primary" style={{ position: 'absolute', top: '10%', right: '5%' }} onClick={() => handleCreate()}>Crează Petiție</Button>
+                    {creating ? <div className="petition-form-wrapper">
                         <Form
-                            className='form'
                             name="basic"
-                            labelCol={{
-                                span: 8,
-                            }}
-                            wrapperCol={{
-                                span: 16,
-                            }}
                             initialValues={{
                                 remember: true,
                             }}
@@ -110,7 +104,7 @@ function Petitions() {
                                         message: 'Introduceti va rog titlul petitiei',
                                     }
                                 ]}>
-                                <Input/>
+                                <Input.TextArea cols={60} rows={2} />
                             </Form.Item>
                             <Form.Item
 
@@ -123,29 +117,28 @@ function Petitions() {
                                 }
                             ]}
                             >
-                            <Input />
+                            <Input.TextArea cols={60} rows={6} />
                         </Form.Item>
                         <Form.Item>
-                            <Button type="primary" htmlType="submit" >Creaza Petitia</Button>
+                            <Button type="primary" htmlType="submit" >Trimite Petiția</Button>
                         </Form.Item>
                         </Form>
                     </div> : <></>}
-                    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                    <div className="petitions-wrapper">
                         {petitions.map(petition => (
                             <Card
+                                className="petition-card"
                                 key={petition.id}
-                                style={{ width: '100%', maxWidth: '900px', margin: '16px auto' }}
-
                             >
-                                <h2>{petition.title}</h2>
-                                <h3>Voturi: {petition.subs_num}</h3>
-                                {/* <Meta title={petition.title} description={`Subscriptii: ${petition.subs_num}`} /> */}
-                                <p>{petition.body}</p>
-                                <Button type="primary" onClick={() => handleSubscription(petition.id)}>Voteza</Button>
+                                <h2 className="petition-title">{petition.title}</h2>
+                                <h3 className="petition-votes">{petition.subs_num} voturi</h3>
+                                <hr></hr>
+                                <p className="petition-body">{petition.body}</p>
+                                <Button type="primary" onClick={() => handleSubscription(petition.id)}>Votează</Button>
                             </Card>
                         ))}
                     </div>
-                </>
+                </div>
             )}
         </>
     )
