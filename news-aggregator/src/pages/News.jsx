@@ -22,17 +22,27 @@ function News() {
     }
     const fetchNews = async () => {
         try {
-            const token = await localStorage.getItem('access-token');
+            const token = localStorage.getItem('access-token');
             const headers = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
             };
-            axios.get('http://127.0.0.1:8000/posts/get-filtered', { headers }).then((res) => {
+            console.log(token);
+            if (token == null){
+                axios.get('http://127.0.0.1:8000/posts/get-all',).then((res) => {
+                    console.log(res.data);
+                    setPosts(res.data);
+                    setLoading(false);
+                })
+            } else {
+                axios.get('http://127.0.0.1:8000/posts/get-filtered', { headers }).then((res) => {
                 console.log(res.data);
                 setPosts(res.data);
                 setLoading(false);
             })
+            }
+            
         } catch (e) {
             console.error('error', e);
             setLoading(false);

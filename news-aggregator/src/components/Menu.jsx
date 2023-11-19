@@ -10,7 +10,7 @@ function getItem(label, key, icon, items, type, path) {
     items,
     label,
     type,
-    path, 
+    path,
   };
 }
 
@@ -18,7 +18,7 @@ const items = [
   getItem('Meniu', 'sub1', <AppstoreOutlined />, [
     getItem('Noutăți', '1', null, null, null, '/news'),
     getItem('Petiții', '2', null, null, null, '/petitions'),
-    getItem('Proiecte de lege', '3', null, null, null, '/laws'),
+    getItem('Cont', '3', null, null, null, '/cabinet'),
   ]),
 ];
 
