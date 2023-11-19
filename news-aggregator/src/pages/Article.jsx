@@ -62,8 +62,8 @@ function Article() {
                         </Button>
 
                         <div>
-                            { showPollForm ? (
-                                <CreatePoll postId={localStorage.getItem('post')}/>
+                            {showPollForm ? (
+                                <CreatePoll postId={localStorage.getItem('post')} />
                             ) : (
                                 <p></p>
                             )}
@@ -72,7 +72,7 @@ function Article() {
 
                     <div>
                         {post.polls_attached && post.polls_attached.map(
-                            poll => <Poll key={poll.id} pollData={poll} />
+                            poll => <Poll key={poll.id} pollData={poll} fetchData={fetchData} />
                         )}
                     </div>
 

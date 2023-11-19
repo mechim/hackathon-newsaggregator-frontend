@@ -19,10 +19,11 @@ const PollComponent = (props) => {
                 'Authorization': 'Bearer ' + token
             };
             await axios.post(`http://127.0.0.1:8000/polls/vote/${props.pollData.id}/${selectedOption}`,
-                        null,
-                        { headers }).then((res) => {
-                            showNotification('success', 'Mulțumesc! Vocea ta conteză!')
-                        });
+                null,
+                { headers }).then((res) => {
+                    showNotification('success', 'Mulțumesc! Vocea ta conteză!');
+                    props.fetchData();
+                });
         } catch (e) {
             console.error('error in fetchin article', e);
             showNotification('error', 'Votul tău deja a fost înregistrat')
