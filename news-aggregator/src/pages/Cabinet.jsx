@@ -95,7 +95,12 @@ function Cabinet() {
           <Navbar />
 
           <Row className="container">
-          {!loading && data.user ? (
+          {loading && !data.user ? (
+            <div className="spin-container">
+            <Spin />
+            </div>
+            
+          ) : (
             <>
               <Col span={12} className="user-info">
                 
@@ -128,10 +133,6 @@ function Cabinet() {
               </Col>
               
             </>
-          ) : (
-            <div >
-              <Spin />
-            </div>
           )}
         </Row>
         </>
