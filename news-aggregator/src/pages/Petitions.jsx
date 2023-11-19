@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Spin, Card, Form , Input} from 'antd';
+import { Button, Spin, Card, Form , Input, message } from 'antd';
 import Navbar from "../components/Navbar";
 import axios from 'axios';
 import './Petitions.css'
@@ -27,10 +27,12 @@ function Petitions() {
             };
             await axios.post(`http://127.0.0.1:8000/petitions/subscribe/${id}`, null, { headers }).then((res) => {
                 console.log(res.data);
+                showNotification('success', 'Mulțumesc! Vocea ta conteză!')
                 fetchPetitions();
             })
         } catch (error) {
             console.error('error in subscribing', error);
+            showNotification('error', 'Votul tău deja a fost înregistrat')
         }
     }
     const onFinish = async(values) => {
@@ -52,6 +54,10 @@ function Petitions() {
     }
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
+    };
+
+    const showNotification = (type, text) => {
+        message[type](text);
     };
 
     const fetchPetitions = async () => {
