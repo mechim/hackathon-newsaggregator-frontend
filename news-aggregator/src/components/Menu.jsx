@@ -10,7 +10,7 @@ function getItem(label, key, icon, items, type, path) {
     items,
     label,
     type,
-    path, 
+    path,
   };
 }
 

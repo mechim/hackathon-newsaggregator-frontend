@@ -25,7 +25,7 @@ function Cabinet() {
 
     useEffect(() => {
         // console.log(data);
-        if (data != undefined){
+        if (data != undefined) {
             console.log(data.user['subscriptions']);
             data.user['subscriptions'].forEach(element => {
                 //const updatedChekedTags = [...checkedTags, element['name']];
@@ -82,61 +82,60 @@ function Cabinet() {
             'Authorization': 'Bearer ' + token
         };
         try {
-            await axios.post('http://127.0.0.1:8000/users/update-subs', {"tags": checkedTags}, { headers }).then((res) => {
+            await axios.post('http://127.0.0.1:8000/users/update-subs', { "tags": checkedTags }, { headers }).then((res) => {
                 // console.log(res.data)
             })
         } catch (e) {
             console.error(e);
         }
-        
+
     }
     return (
         <>
-          <Navbar />
+            <Navbar />
 
-          <Row className="container">
-          {loading && !data.user ? (
-            <div className="spin-container">
-            <Spin />
+            <div >
+                {!loading && data.user ? (
+                    <>
+                        <div >
+
+                            <h1>Login: {data.user['username']}</h1>
+                            <h1>Email: {data.user['email']}</h1>
+                        </div>
+
+                        <div span={12} style={{ display: "flex", flexDirection: "column", marginTop: "15%", marginLeft: "30%", width: "30%" }}>
+                            <h1>Categorii</h1>
+                            {tags &&
+                                tags.map((tag) => (
+                                    <Checkbox
+                                        className="tag-checkbox"
+                                        checked={checkedTags.includes(tag.name)}
+                                        onChange={getChangeHandler(tag.name)}
+                                        key={tag.name}
+                                    >
+                                        {tag.name}
+                                    </Checkbox>
+                                ))}
+
+
+                            <Button
+                                
+                                type="primary"
+                                onClick={() => SubscribeUser()}
+                            >
+                                Aboneaza-te
+                            </Button>
+                        </div>
+
+                    </>
+                ) : (
+                    <div className='spin-container'>
+                        <Spin />
+                    </div>
+                )}
             </div>
-            
-          ) : (
-            <>
-              <Col span={12} className="user-info">
-                
-                <h1>Login: {data.user['username']}</h1>
-                <h1>Email: {data.user['email']}</h1>
-              </Col>
-      
-              <Col span = {12} style={{ display: "flex", flexDirection: "column", marginTop: "15%", marginLeft:"30%", width:"30%" }}>
-                <h1>Categorii</h1>
-                {tags &&
-                  tags.map((tag) => (
-                    <Checkbox
-                      className="tag-checkbox"
-                      checked={checkedTags.includes(tag.name)}
-                      onChange={getChangeHandler(tag.name)}
-                      key={tag.name}
-                    >
-                      {tag.name}
-                    </Checkbox>
-                  ))}
-              
-      
-              <Button
-                className="subscribe-button"
-                type="primary"
-                onClick={() => SubscribeUser()}
-              >
-                Aboneaza-te
-              </Button>
-              </Col>
-              
-            </>
-          )}
-        </Row>
         </>
-      );
+    );
 }
 
 export default Cabinet;
