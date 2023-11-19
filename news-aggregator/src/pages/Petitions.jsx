@@ -65,15 +65,13 @@ function Petitions() {
                             <Card
                                 key={petition.id}
                                 style={{ width: '100%', maxWidth: '900px', margin: '16px auto' }}
-                                // actions={[
-                                //     <Button onClick={() => handleSubscription(petition.id)} type="primary">Semneaza</Button>
-                                // ]}
+
                             >
                                 <h2>{petition.title}</h2>
                                 <h3>Voturi: {petition.subs_num}</h3>
                                 {/* <Meta title={petition.title} description={`Subscriptii: ${petition.subs_num}`} /> */}
                                 <p>{petition.body}</p>
-                                <Button type="primary">Voteza</Button>
+                                <Button type="primary" onClick={() => handleSubscription(petition.id)}>Voteza</Button>
                             </Card>
                         ))}
                     </div>
