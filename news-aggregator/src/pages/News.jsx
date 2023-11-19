@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import axios from 'axios';
 import { Spin } from 'antd';
 import { Link } from 'react-router-dom/dist';
+import './News.css';
 function News() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -46,18 +47,34 @@ function News() {
     console.log(sortedPosts);
     return (
         <>
-            <Navbar />
-            {loading ? <>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
-                    <Spin />
-                </div>
-            </> : <>
-                {sortedPosts && sortedPosts.map(
-                    post => <Link to='/article' onClick={() => onClickArticle(post.id)}><h3 key={post.id}>{post.title} - {post.timestamp}</h3></Link>
-                )}
-            </>}
+          <Navbar />
+          {loading ? (
+            <div className="spin-container">
+              <Spin />
+            </div>
+          ) : (
+            <div className="container">
+              {sortedPosts &&
+                sortedPosts.map((post) => (
+                  <Link
+                    key={post.id}
+                    to='/article'
+                    onClick={() => onClickArticle(post.id)}
+                    className="link"
+                  >
+                    <div className="post">
+                      <div className="bullet-point">&#8226;</div>
+                      <div>
+                        <h3>{post.title}</h3>
+                        <p className="timestamp">{post.timestamp}</p>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+            </div>
+          )}
         </>
-    )
-}
+      );
+    }
 
 export default News;

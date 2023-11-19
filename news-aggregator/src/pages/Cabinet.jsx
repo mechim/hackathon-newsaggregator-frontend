@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
-import { Spin, Checkbox, Button } from 'antd';
+import { Spin, Checkbox, Button, Row, Col } from 'antd';
+import './Cabinet.css';
 
 
 function Cabinet() {
@@ -91,25 +92,50 @@ function Cabinet() {
     }
     return (
         <>
-            <Navbar />
+          <Navbar />
 
-            {!loading && data.user ? <>
-                <h1>{data.user['username']}</h1>
-                <h1>{data.user['email']}</h1>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                    {
-                        tags && tags.map(
-                            tag => <Checkbox checked={checkedTags.includes(tag.name)} onChange={getChangeHandler(tag.name)} key={tag.name}>{tag.name}</Checkbox>
-                        )
-                    }
-                </div>
-                <Button type='primary' onClick={() => SubscribeUser() }>Aboneaza-te</Button>
-            </> :
-                <Spin />
-            }
-
+          <Row className="container">
+          {!loading && data.user ? (
+            <>
+              <Col span={12} className="user-info">
+                
+                <h1>Login: {data.user['username']}</h1>
+                <h1>Email: {data.user['email']}</h1>
+              </Col>
+      
+              <Col span = {12} style={{ display: "flex", flexDirection: "column", marginTop: "15%", marginLeft:"30%", width:"30%" }}>
+                <h1>Categorii</h1>
+                {tags &&
+                  tags.map((tag) => (
+                    <Checkbox
+                      className="tag-checkbox"
+                      checked={checkedTags.includes(tag.name)}
+                      onChange={getChangeHandler(tag.name)}
+                      key={tag.name}
+                    >
+                      {tag.name}
+                    </Checkbox>
+                  ))}
+              
+      
+              <Button
+                className="subscribe-button"
+                type="primary"
+                onClick={() => SubscribeUser()}
+              >
+                Aboneaza-te
+              </Button>
+              </Col>
+              
+            </>
+          ) : (
+            <div >
+              <Spin />
+            </div>
+          )}
+        </Row>
         </>
-    )
+      );
 }
 
 export default Cabinet;

@@ -7,8 +7,11 @@
 }
 
 .col2{
+    position: absolute;
     display: flex;
     flex-direction: row;
     align-items: center; 
     justify-content: end;
+    margin-left: 90%;
+    margin-top: 0.3%;
 }

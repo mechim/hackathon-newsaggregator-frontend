@@ -18,6 +18,7 @@ function Article() {
     const fetchData = async () => {
         setLoading(true)
         try {
+            setLoading(true);
             const token = await localStorage.getItem('access-token');
             const headers = {
                 'Accept': 'application/json',

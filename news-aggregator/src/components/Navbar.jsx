@@ -3,6 +3,7 @@ import { Col, Row, Button, Layout, Form, Input, Spin } from 'antd';
 import { Link, useNavigate } from "react-router-dom";
 import './Navbar.css';
 import axios from 'axios';
+import MenuBar from './Menu';
 
 function Navbar() {
     const [hasResponse, setHasResponse] = useState(false);
@@ -27,10 +28,17 @@ function Navbar() {
     return (
         <nav className='navbar'>
             <Row>
-                <Col span={6}>
-                    <Link to="/news">
+                <Col span={6} style={{
+                    position: 'absolute',
+                    top: 3.5,
+                    left: 10,
+                    
+                    
+                }}>
+                    {/* <Link to="/news">
                         <h1 style={{color:"white", fontFamily:"Lucinda Console", fontSize:"12px", marginLeft:"5%"}}>onClick</h1>
-                    </Link>
+                    </Link> */}
+                    <MenuBar />
                 </Col>
 
                 <Col
@@ -40,7 +48,11 @@ function Navbar() {
 
                     {localStorage.getItem('access-token') ? (
 
-                        <Link to="/cabinet">Cabinet</Link>
+<<<<<<< HEAD
+                        <Link to="/cabinet">Cont</Link>
+=======
+                        <Link to="/cabinet">Cabinetul Personal</Link>
+>>>>>>> c1e47700cc9818e1d775862a3a4a5df51e2b2213
                     ) :
                         <>
                             <Form
