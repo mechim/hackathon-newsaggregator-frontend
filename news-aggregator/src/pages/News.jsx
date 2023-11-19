@@ -51,7 +51,7 @@ function News() {
                 <Spin />
             </> : <>
                 {sortedPosts && sortedPosts.map(
-                    post => <Link to='/article' onClick={() => onClickArticle(post.id)}><h3 key={post.id}>{post.title} - {post.timestamp}</h3></Link>
+                    post => <Link key={post.id} to='/article' onClick={() => onClickArticle(post.id)}><h3 key={post.id}>{post.title} - {post.timestamp}</h3></Link>
                 )}
             </>}
         </>
