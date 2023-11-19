@@ -94,7 +94,7 @@ function Cabinet() {
         <>
             <Navbar />
 
-            <div >
+            <div className='container'>
                 {!loading && data.user ? (
                     <>
                         <div >

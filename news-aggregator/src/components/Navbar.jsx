@@ -74,12 +74,7 @@ function Navbar() {
                                 <Form.Item
                                     style={{ margin: 0 }}
                                     name="username"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your username!',
-                                        },
-                                    ]}
+                                   
                                 >
                                     <Input
                                         placeholder='login' />
@@ -88,12 +83,7 @@ function Navbar() {
                                 <Form.Item
                                     style={{ margin: 0 }}
                                     name="password"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your password!',
-                                        },
-                                    ]}
+                                   
                                 >
                                     <Input.Password
                                         placeholder='parola'
