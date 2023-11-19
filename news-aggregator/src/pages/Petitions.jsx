@@ -82,8 +82,8 @@ function Petitions() {
                 </div>
             ) : (
                 <div>
-                    <h2 style={{paddingLeft: '2%'}}>Petiții active</h2>
-                    <Button type="primary" style={{ position: 'absolute', top: '10%', right: '5%' }} onClick={() => handleCreate()}>Crează Petiție</Button>
+                    <h2 style={{paddingLeft: '2%', marginLeft:"7%"}}>Petiții active</h2>
+                    <Button type="primary" style={{ position: 'absolute', top: '7.5%', right: '5%', justifyContent: 'end', marginRight:"5%" }} onClick={() => handleCreate()}>Crează Petiție</Button>
                     {creating ? <div className="petition-form-wrapper">
                         <Form
                             name="basic"
