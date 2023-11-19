@@ -1,0 +1,31 @@
+.petition-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.petitions-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 15%;
+    margin-right: 15%;
+
+    .petition-card {
+        background-color: #e4ebf4;
+        width: 100%;
+        margin-bottom: 2%;
+
+        .petition-title {
+            margin-top: -1%;
+            margin-bottom: -1%;
+        }
+
+        .petition-body {
+            font-size: 16px;
+        }
+    }
+}
