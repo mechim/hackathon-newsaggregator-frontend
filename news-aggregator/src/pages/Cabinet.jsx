@@ -105,7 +105,9 @@ function Cabinet() {
                 </div>
                 <Button type='primary' onClick={() => SubscribeUser() }>Aboneaza-te</Button>
             </> :
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
                 <Spin />
+            </div>
             }
 
         </>

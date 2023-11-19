@@ -48,7 +48,7 @@ function Navbar() {
 
                     {localStorage.getItem('access-token') ? (
 
-                        <Link to="/cabinet">Cabinet</Link>
+                        <Link to="/cabinet">Cabinetul Personal</Link>
                     ) :
                         <>
                             <Form
