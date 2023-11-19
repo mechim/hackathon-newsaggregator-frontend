@@ -1,0 +1,27 @@
+.poll-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e4ebf4;
+    margin-top: 1%;
+    margin-left: 20%;
+    margin-right: 20%;
+
+    .ant-card-head-title {
+        font-size: 20px;
+    }
+
+    .poll-options {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .poll-option {
+        font-size: large;
+    }
+
+    .poll-button {
+        margin-top: 10%;
+        margin-left: 28%;
+    }
+}

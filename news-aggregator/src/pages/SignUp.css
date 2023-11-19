@@ -49,6 +49,7 @@
 .input_wraper{
     margin-top: -2%;
     align-content: center;
+    background-color: #c8d6ea;
 }
 
 
@@ -59,7 +60,7 @@
     margin-top: 5%;
     width: 40%;
     height: 60%;
-    background-color: #c8d6ea;
+    
     color: black;
     font-weight: 450;
 }

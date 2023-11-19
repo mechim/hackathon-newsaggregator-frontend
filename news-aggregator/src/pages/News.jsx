@@ -17,7 +17,7 @@ function News() {
         sortData();
     }, [posts])
 
-    const onClickArticle = async(id) => {
+    const onClickArticle = async (id) => {
         localStorage.setItem('post', id);
     }
     const fetchNews = async () => {
